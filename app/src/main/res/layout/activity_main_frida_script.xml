@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/frida_script_xml"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/frida_script_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入需要执行的frida脚本地址"
+        />
+    <Button
+        android:id="@+id/frida_script_start_inject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始注入"
+        />
+
+</LinearLayout>

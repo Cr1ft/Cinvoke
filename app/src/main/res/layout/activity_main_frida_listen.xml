@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frida_listen_xml"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/frida_resume_or_wait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RadioButton
+            android:id="@+id/frida_listen_resume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resume"/>
+        <RadioButton
+            android:id="@+id/frida_listen_wait"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wait"/>
+    </RadioGroup>
+    <EditText
+        android:id="@+id/frida_listen_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入监听的端口" />
+    <Button
+        android:id="@+id/frida_listen_start_inject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始注入" />
+
+</LinearLayout>
