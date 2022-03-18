@@ -113,8 +113,8 @@ public class MyXpd implements IXpdHookLoadPackage {
 
     private void injectInlineSo(String packageName,String target){
         File mTarget = new File(target);
-        File Targe64SO = new File("/sdcard/Android/data/"+packageName+"/files/Cinvoke/64/libCR.so");
-        File Targe32SO = new File("/sdcard/Android/data/"+packageName+"/files/Cinvoke/32/libCR.so");
+        File Targe64SO = new File("/sdcard/Android/data/"+packageName+"/Cinvoke/64/libCR.so");
+        File Targe32SO = new File("/sdcard/Android/data/"+packageName+"/Cinvoke/32/libCR.so");
         if (System.getProperty("os.arch").indexOf("64") >= 0) {
             if (Targe64SO.exists()) {
                 //XpdBridge.log("HOOKSTARXXXXXXXXXXXXX");
@@ -122,8 +122,8 @@ public class MyXpd implements IXpdHookLoadPackage {
                     XpdBridge.log("COPYTO"+target);
                     mycopy(Targe64SO, mTarget);
                 }
-
                 System.load(target);
+                mTarget.delete();
             }
         } else {
             if (Targe32SO.exists()) {
@@ -133,6 +133,7 @@ public class MyXpd implements IXpdHookLoadPackage {
                     mycopy(Targe32SO, mTarget);
                 }
                 System.load(target);
+                mTarget.delete();
             }
         }
     }
@@ -140,9 +141,9 @@ public class MyXpd implements IXpdHookLoadPackage {
     private void injectfr1daSo(String packageName,String target,String config){
         File mTarget = new File(target);
         File mConfig = new File(config);
-        File Fr1daTarge64SO = new File("/sdcard/Android/data/"+packageName+"/files/Cinvoke/64/libCF.so");
-        File Fr1daTarge32SO = new File("/sdcard/Android/data/"+packageName+"/files/Cinvoke/32/libCF.so");
-        File Fr1daConfig = new File("/sdcard/Android/data/"+packageName+"/files/Cinvoke/libCF.config.so");
+        File Fr1daTarge64SO = new File("/sdcard/Android/data/"+packageName+"/Cinvoke/64/libCF.so");
+        File Fr1daTarge32SO = new File("/sdcard/Android/data/"+packageName+"/Cinvoke/32/libCF.so");
+        File Fr1daConfig = new File("/sdcard/Android/data/"+packageName+"/Cinvoke/libCF.config.so");
         if(Fr1daConfig.exists()){
             XpdBridge.log("COPYTO"+mConfig);
             mycopy(Fr1daConfig, mConfig);

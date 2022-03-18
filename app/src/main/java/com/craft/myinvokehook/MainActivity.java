@@ -103,11 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     //设置LinearLayout垂直布局
                     SharedPreferences.Editor ed = sp.edit();
                     String target = sp.getString("inlineHookTarget","null");
-                    if(!"null".equals(target)){
-                        if(!(new File("/sdcard/Android/data/"+target+"/files/Cinvoke").exists())){
-                            Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target+"/files");
-                        }
-                    }
+                    Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target);
                     ed.putInt("OnInLineHook", 1);
                     ed.commit();
                     update();
@@ -220,15 +216,7 @@ public class MainActivity extends AppCompatActivity {
                                 ed.putString("fridaScriptPath","N/A");
                                 ed.commit();
                                 update();
-
-                                int status = sp.getInt("OnFridaHook",0);
-                                if(!"null".equals(target) && status == 1){
-                                    if(!(new File("/sdcard/Android/data/"+target+"/files/Cinvoke").exists())){
-                                        Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target+"/files");
-                                    }else{
-                                        Utils.copyFile("/sdcard/Cinvoke/libCF.config.so","/sdcard/Android/data/"+target+"/files/Cinvoke/libCF.config.so");
-                                    }
-                                }
+                                Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target);
 
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -265,14 +253,7 @@ public class MainActivity extends AppCompatActivity {
                                 ed.putString("fridaScriptPath",path);
                                 ed.putInt("fridaPort",0);
                                 ed.commit();
-                                int status = sp.getInt("OnFridaHook",0);
-                                if(!"null".equals(target) && status == 1){
-                                    if(!(new File("/sdcard/Android/data/"+target+"/files/Cinvoke").exists())){
-                                        Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target+"/files");
-                                    }else{
-                                        Utils.copyFile("/sdcard/Cinvoke/libCF.config.so","/sdcard/Android/data/"+target+"/files/Cinvoke/libCF.config.so");
-                                    }
-                                }
+                                Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target);
                                 update();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -341,11 +322,7 @@ public class MainActivity extends AppCompatActivity {
                     String info = JSON.toJSONString(PhoneMgr.getRandomPhoneinfo());
                     SharedPreferences.Editor ed = sp.edit();
                     String target = sp.getString("NewPhoneTarget","null");
-                    if(!"null".equals(target)){
-                        if(!(new File("/sdcard/Android/data/"+target+"/files/Cinvoke").exists())){
-                            Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target+"/files");
-                        }
-                    }
+                    Utils.copyDir("/sdcard/Cinvoke","/sdcard/Android/data/"+target);
                     ed.putString("NewPhonInfo",info);
                     ed.putInt("OnNewPhone", 1);
                     ed.putString("NewInsInfo",String.valueOf(System.currentTimeMillis()));

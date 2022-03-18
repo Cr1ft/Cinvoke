@@ -1,6 +1,7 @@
 package com.craft.myinvokehook;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 import android.view.View;
@@ -11,15 +12,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppAdapter extends BaseAdapter {
     Context context;
-    List<PackageInfo> packageInfo;
+    List<PackageInfo> allPackageInfo;
+    List<PackageInfo> packageInfo = new ArrayList<>();
 
     AppAdapter(Context context) {
         this.context = context;
-        packageInfo = context.getPackageManager().getInstalledPackages(0);
+        allPackageInfo = context.getPackageManager().getInstalledPackages(0);
+        for(int i = 0 ; i < allPackageInfo.size(); i++ ){
+            if((allPackageInfo.get(i).applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
+                packageInfo.add(allPackageInfo.get(i));
+            }
+        }
     }
 
     @Override
